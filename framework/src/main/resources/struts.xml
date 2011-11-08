@@ -16,6 +16,8 @@
     <constant name="struts.configuration.xml.reload" value="false" />
     <!-- 国际化资源文件 -->
     <constant name="struts.custom.i18n.resources" value="content/Language" />
+    <!-- 浏览器缓存 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
     <!-- 默认后缀名 -->
     <constant name="struts.action.extension" value="do,action,jhtml,," />
 	<!-- Struts Annotation -->
