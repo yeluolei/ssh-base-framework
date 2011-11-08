@@ -3,6 +3,9 @@ package org.chinasb.framework.modules.demo.service;
 import java.util.List;
 import org.chinasb.framework.modules.demo.model.Demo;
 
+import com.googlecode.genericdao.search.ISearch;
+import com.googlecode.genericdao.search.SearchResult;
+
 /**
  * @author ethan
  */
@@ -67,7 +70,35 @@ public interface DemoService {
 	 * @return
 	 */
 	public Demo[] findByIds(Integer[] ids);
-
+	
+	/**
+	 * 根据条件查询demo记录集
+	 * @param search
+	 * @return
+	 */
+	public List<Demo> search(ISearch search);
+	
+	/**
+	 * 根据条件查询demo记录集总数
+	 * @param search
+	 * @return
+	 */
+    public int count(ISearch search);
+    
+    /**
+     * 根据条件查询demo集合与总数
+     * @param search
+     * @return
+     */
+    public SearchResult<Demo> searchAndCount(ISearch search);
+    
+	/**
+	 * 根据条件查询demo主键ID
+	 * @param search
+	 * @return
+	 */
+	public Integer searchUnique(ISearch search);
+    
 	/**
 	 * 持久化session数据到数据库
 	 */
