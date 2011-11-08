@@ -18,32 +18,32 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class DemoAction extends BaseAction {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Resource
-	private DemoService demoService;
+    @Resource
+    private DemoService demoService;
 
-	@Action(value = "/demoAction", results = { @Result(name = SUCCESS, location = "/manager/modules/demo/index.jsp") })
-	@Override
-	public String execute() {
-		List<Demo> demoList = demoService.findAll();
-		httpServletRequest.setAttribute("DEMO_LIST", demoList);
-		return SUCCESS;
-	}
+    @Action(value = "/demoAction", results = { @Result(name = SUCCESS, location = "/manager/modules/demo/index.jsp") })
+    @Override
+    public String execute() {
+        List<Demo> demoList = demoService.findAll();
+        httpServletRequest.setAttribute("DEMO_LIST", demoList);
+        return SUCCESS;
+    }
 
-	@Action(value = "/demoAddAction", results = { @Result(name = SUCCESS, location = "/demoAction", type = "redirect") })
-	public String add() {
-		Demo demo = new Demo();
-		demo.setTitle(httpServletRequest.getParameter("title"));
-		demo.setContent(httpServletRequest.getParameter("content"));
-		demo.setPublishdate(new Date());
-		demoService.save(demo);
-		return SUCCESS;
-	}
+    @Action(value = "/demoAddAction", results = { @Result(name = SUCCESS, location = "/demoAction", type = "redirect") })
+    public String add() {
+        Demo demo = new Demo();
+        demo.setTitle(httpServletRequest.getParameter("title"));
+        demo.setContent(httpServletRequest.getParameter("content"));
+        demo.setPublishdate(new Date());
+        demoService.save(demo);
+        return SUCCESS;
+    }
 
-	@Action(value = "/demoDeleteAction", results = { @Result(name = SUCCESS, location = "/demoAction", type = "redirect") })
-	public String delete() {
-		demoService.removeById(Integer.parseInt(httpServletRequest.getParameter("id")));
-		return SUCCESS;
-	}
+    @Action(value = "/demoDeleteAction", results = { @Result(name = SUCCESS, location = "/demoAction", type = "redirect") })
+    public String delete() {
+        demoService.removeById(Integer.parseInt(httpServletRequest.getParameter("id")));
+        return SUCCESS;
+    }
 }

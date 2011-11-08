@@ -19,40 +19,39 @@ import com.opensymphony.xwork2.ActionSupport;
  * 
  * @author ethan
  */
-public class BaseAction extends ActionSupport implements ServletContextAware,
-		ServletResponseAware, ServletRequestAware, SessionAware {
+public class BaseAction extends ActionSupport implements ServletContextAware, ServletResponseAware, ServletRequestAware, SessionAware {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected ServletContext servletContext;
+    protected ServletContext servletContext;
 
-	protected HttpServletRequest httpServletRequest;
+    protected HttpServletRequest httpServletRequest;
 
-	protected HttpServletResponse httpServletResponse;
+    protected HttpServletResponse httpServletResponse;
 
-	protected HttpSession httpSession;
+    protected HttpSession httpSession;
 
-	protected Map<String, Object> session;
+    protected Map<String, Object> session;
 
-	@Override
-	public void setServletContext(ServletContext context) {
-		this.servletContext = context;
-	}
+    @Override
+    public void setServletContext(ServletContext context) {
+        this.servletContext = context;
+    }
 
-	@Override
-	public void setServletResponse(HttpServletResponse response) {
-		this.httpServletResponse = response;
-	}
+    @Override
+    public void setServletResponse(HttpServletResponse response) {
+        this.httpServletResponse = response;
+    }
 
-	@Override
-	public void setServletRequest(HttpServletRequest request) {
-		this.httpServletRequest = request;
-		this.httpSession = request.getSession();
-	}
+    @Override
+    public void setServletRequest(HttpServletRequest request) {
+        this.httpServletRequest = request;
+        this.httpSession = request.getSession();
+    }
 
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
 
 }
