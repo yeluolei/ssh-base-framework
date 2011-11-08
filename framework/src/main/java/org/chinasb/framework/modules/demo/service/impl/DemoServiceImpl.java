@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.googlecode.genericdao.search.ISearch;
+import com.googlecode.genericdao.search.SearchResult;
+
 /**
  * @author ethan
  */
@@ -71,6 +74,26 @@ public class DemoServiceImpl implements DemoService {
 		return demoDao.find(ids);
 	}
 
+	@Override
+	public List<Demo> search(ISearch search) {
+		return demoDao.search(search);
+	}
+	
+	@Override
+	public int count(ISearch search) {
+		return demoDao.count(search);
+	}
+	
+	@Override
+	public SearchResult<Demo> searchAndCount(ISearch search) {
+		return demoDao.searchAndCount(search);
+	}
+	
+	@Override
+	public Integer searchUnique(ISearch search) {
+		return demoDao.searchUnique(search);
+	}
+	
 	@Override
 	public void flush() {
 		demoDao.flush();
