@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
+import org.chinasb.framework.core.base.model.BaseModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,6 +24,8 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 
     private static final long serialVersionUID = 1L;
 
+    private BaseModel returnModel;
+
     protected ServletContext servletContext;
 
     protected HttpServletRequest httpServletRequest;
@@ -32,6 +35,14 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
     protected HttpSession httpSession;
 
     protected Map<String, Object> session;
+
+    public BaseModel getReturnModel() {
+        return returnModel;
+    }
+
+    public void setReturnModel(BaseModel returnModel) {
+        this.returnModel = returnModel;
+    }
 
     @Override
     public void setServletContext(ServletContext context) {
@@ -54,4 +65,14 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
         this.session = session;
     }
 
+    public void returnModel(Object data) {
+        returnModel = new BaseModel();
+        returnModel.setData(data);
+    }
+    
+    public void returnModel(Object data, boolean returnState) {
+        returnModel = new BaseModel();
+        returnModel.setData(data);
+        returnModel.setReturnState(returnState);
+    }
 }

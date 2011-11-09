@@ -1,15 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../common/init.jsp"%>
+<%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
+
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>demo page</title>
-	</head>
-	<body>
-		<h1><a href="../application/modules/demo/save.jsp">添加数据</a></h1>
-		<s:iterator value="#request.DEMO_LIST">
-			<a href="demoDeleteAction?id=${id}" >删除</a> ${id}： ${title} ------- ${content} ${publishdate}<br />
-		</s:iterator>
-	</body>
+  <head>
+    <sj:head jqueryui="true" jquerytheme="redmond" />
+  </head>
+  <body>
+    <s:url id="remoteurl" action="demoAction"/>
+    <sjg:grid
+        id="gridtable"
+        caption="Grid Examples"
+        dataType="json"
+        href="%{remoteurl}"
+        pager="true"
+        gridModel="data.gridModel"
+        rowList="10,15,20"
+        rowNum="15"
+        rownumbers="true"
+        onSelectRowTopics="rowselect"
+    >
+        <sjg:gridColumn name="id" index="id" title="ID" formatter="integer" sortable="false"/>
+        <sjg:gridColumn name="title" index="title" title="Title" sortable="true"/>
+        <sjg:gridColumn name="content" index="content" title="Content" sortable="false"/>
+        <sjg:gridColumn name="publishdate" index="publishdate" title="Publishdate" sortable="true"/>
+    </sjg:grid>
+    
+    <script type="text/javascript">
+		$.subscribe('rowselect', function(event, data) {
+        	alert('Selected Row : ' + event.originalEvent.id);
+		});
+	</script>
+  </body>
 </html>
