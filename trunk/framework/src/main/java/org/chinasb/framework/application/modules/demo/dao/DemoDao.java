@@ -1,6 +1,6 @@
-package org.chinasb.framework.modules.demo.dao;
+package org.chinasb.framework.application.modules.demo.dao;
 
-import org.chinasb.framework.modules.demo.model.Demo;
+import org.chinasb.framework.application.modules.demo.model.Demo;
 
 import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 

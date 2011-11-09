@@ -12,7 +12,7 @@
 	<context:annotation-config />
 	
 	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 --> 
-	<context:component-scan base-package="org.chinasb.framework.modules" />
+	<context:component-scan base-package="org.chinasb.framework.application.modules" />
 	
 	<!-- hibernate 属性配置 -->
 	<context:property-placeholder location="classpath:config/hibernate/hibernate.properties"/>

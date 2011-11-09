@@ -1,4 +1,4 @@
-package org.chinasb.framework.modules.demo.action;
+package org.chinasb.framework.application.modules.demo.action;
 
 import java.util.Date;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.chinasb.framework.core.base.test.BaseTestTemplate;
-import org.chinasb.framework.modules.demo.model.Demo;
-import org.chinasb.framework.modules.demo.service.DemoService;
+import org.chinasb.framework.application.modules.demo.model.Demo;
+import org.chinasb.framework.application.modules.demo.service.DemoService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
