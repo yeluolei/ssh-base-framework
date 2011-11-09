@@ -11,7 +11,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.util.ServletContextAware;
-import org.chinasb.framework.core.base.model.BaseModel;
+import org.chinasb.framework.core.base.model.PageModel;
+import org.chinasb.framework.core.base.model.ResponseModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,7 +25,7 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 
     private static final long serialVersionUID = 1L;
 
-    private BaseModel returnModel;
+    private ResponseModel responseModel = new ResponseModel();
 
     protected ServletContext servletContext;
 
@@ -36,15 +37,15 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
 
     protected Map<String, Object> session;
 
-    public BaseModel getReturnModel() {
-        return returnModel;
-    }
+    public ResponseModel getResponseModel() {
+		return responseModel;
+	}
 
-    public void setReturnModel(BaseModel returnModel) {
-        this.returnModel = returnModel;
-    }
+	public void setResponseModel(ResponseModel responseModel) {
+		this.responseModel = responseModel;
+	}
 
-    @Override
+	@Override
     public void setServletContext(ServletContext context) {
         this.servletContext = context;
     }
@@ -65,14 +66,27 @@ public class BaseAction extends ActionSupport implements ServletContextAware, Se
         this.session = session;
     }
 
-    public void returnModel(Object data) {
-        returnModel = new BaseModel();
-        returnModel.setData(data);
+    public String responseModel(Object data) {
+    	responseModel.setData(data);
+        return ActionSupport.SUCCESS;
     }
     
-    public void returnModel(Object data, boolean returnState) {
-        returnModel = new BaseModel();
-        returnModel.setData(data);
-        returnModel.setReturnState(returnState);
+    public String responseModel(Object data, PageModel pagination) {
+    	responseModel.setData(data);
+    	responseModel.setPagination(pagination);
+        return ActionSupport.SUCCESS;
+    }
+    
+    public String responseModel(Object data, PageModel pagination, String message) {
+    	responseModel.setData(data);
+    	responseModel.setMessage(message);
+    	responseModel.setPagination(pagination);
+        return ActionSupport.SUCCESS;
+    }
+    
+    public String responseModel(boolean responseState, String message) {
+    	responseModel.setResponseState(responseState);
+    	responseModel.setMessage(message);
+        return ActionSupport.SUCCESS;
     }
 }
