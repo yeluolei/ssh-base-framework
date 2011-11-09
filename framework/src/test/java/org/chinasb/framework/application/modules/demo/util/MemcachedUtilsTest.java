@@ -1,4 +1,4 @@
-package org.chinasb.framework.modules.demo.util;
+package org.chinasb.framework.application.modules.demo.util;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

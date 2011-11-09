@@ -28,7 +28,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="org.chinasb.framework.modules.*.model" />
+		<property name="packagesToScan" value="org.chinasb.framework.application.modules.*.model" />
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>

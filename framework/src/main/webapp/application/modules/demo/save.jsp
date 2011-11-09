@@ -4,12 +4,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>demo page</title>
+		<title>save demo</title>
 	</head>
 	<body>
-		<h1><a href="manager/modules/demo/save.jsp">添加数据</a></h1>
-		<s:iterator value="#request.DEMO_LIST">
-			<a href="demoDeleteAction?id=${id}" >删除</a> ${id}： ${title} ------- ${content} ${publishdate}<br />
-		</s:iterator>
+		<s:form action="/demo/demoAddAction">
+			<s:textfield name="title" label="Title" />
+			<s:textarea name="content" label="Content" />
+			<s:submit />
+		</s:form>
 	</body>
 </html>

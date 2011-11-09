@@ -1,7 +1,7 @@
-package org.chinasb.framework.modules.demo.service;
+package org.chinasb.framework.application.modules.demo.service;
 
 import java.util.List;
-import org.chinasb.framework.modules.demo.model.Demo;
+import org.chinasb.framework.application.modules.demo.model.Demo;
 
 import com.googlecode.genericdao.search.ISearch;
 import com.googlecode.genericdao.search.SearchResult;

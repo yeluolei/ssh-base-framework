@@ -1,12 +1,12 @@
-package org.chinasb.framework.modules.demo.service.impl;
+package org.chinasb.framework.application.modules.demo.service.impl;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.chinasb.framework.modules.demo.dao.DemoDao;
-import org.chinasb.framework.modules.demo.model.Demo;
-import org.chinasb.framework.modules.demo.service.DemoService;
+import org.chinasb.framework.application.modules.demo.dao.DemoDao;
+import org.chinasb.framework.application.modules.demo.model.Demo;
+import org.chinasb.framework.application.modules.demo.service.DemoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

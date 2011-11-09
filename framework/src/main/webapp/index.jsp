@@ -1,2 +1,1 @@
-
-<% response.sendRedirect("demoAction"); %>
+<% response.sendRedirect("demo/demoAction"); %>

@@ -1,4 +1,4 @@
-package org.chinasb.framework.modules.demo.model;
+package org.chinasb.framework.application.modules.demo.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -50,6 +51,7 @@ public class Demo implements Serializable {
 		this.content = content;
 	}
 
+	@JSON(format="yyyy-MM-dd HH:ss:mm")
 	public Date getPublishdate() {
 		return publishdate;
 	}
