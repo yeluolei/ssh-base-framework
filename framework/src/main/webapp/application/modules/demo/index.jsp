@@ -19,19 +19,11 @@
         $.subscribe('searchgrid', function(event,data) {
             $("#gridtable").jqGrid('searchGrid', {sopt:['cn','bw','eq','ne','lt','gt','ew']} );
       	});
-	    $.subscribe('showcolumns', function(event, data) {  
-	        $.struts2_jquery.require("js/plugins/grid.setcolumns.js");  
-	        $("#gridtable").jqGrid('setColumns', {});  
-	    });
 	</script>  
   </head>
   <body>
     <s:url id="remoteurl" action="demoAction"/>
     <s:url id="editurl" action="../../../demo/demoEditAction"/>
-    <sj:submit id="grid_load_colsbutton"
-    		value="Show/Hide Columns"
-    		onClickTopics="showcolumns"
-    		button="true" />
     <sjg:grid
         id="gridtable"
         dataType="json"
@@ -49,13 +41,12 @@
         rowList="10,15,20"
         rowNum="15"
 		editurl="%{editurl}"
-    	editinline="true"
     	onSelectRowTopics="rowselect"
     	onEditInlineSuccessTopics="oneditsuccess"
     	multiselect="true"
     >
-        <sjg:gridColumn name="id" index="id" title="ID" formatter="integer" sortable="false" />
-        <sjg:gridColumn name="title" index="title" title="Title" editable="true" edittype="text" sortable="true"/>
+        <sjg:gridColumn name="id" index="id" title="Id" formatter="integer" sortable="true" />
+        <sjg:gridColumn name="title" index="title" title="Title" editable="true" edittype="text"/>
         <sjg:gridColumn name="content" index="content" title="Content" editable="true" edittype="textarea" sortable="false" search="false" />
         <sjg:gridColumn name="publishdate" index="publishdate" title="Publishdate" sortable="false" />
     </sjg:grid>

@@ -31,7 +31,7 @@ public class DemoAction extends ActionSupport implements SessionAware {
 	@Resource
 	private DemoService demoService;
 
-	private Integer id;
+	private String id;
 
 	private String title;
 
@@ -154,15 +154,15 @@ public class DemoAction extends ActionSupport implements SessionAware {
 	}
 
 	@JSON(serialize = false)
-	public Integer getId() {
-		return id;
-	}
+	public String getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	@JSON(serialize = false)
+    @JSON(serialize = false)
 	public String getTitle() {
 		return title;
 	}
@@ -198,6 +198,9 @@ public class DemoAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() {
 		Search search = new Search();
+		if("desc".equals(this.sord)) {
+		    search.addSort("id", true);
+		}
 		search.setMaxResults(this.rows);
 		search.setPage(this.page - 1);
 		SearchResult<Demo> result = demoService.searchAndCount(search);
@@ -207,20 +210,26 @@ public class DemoAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
-	@Action(value = "demoEditAction", results = { @Result(name = SUCCESS, type = "json") })
-	public String edit() {
-		if (this.oper == "add") {
-			Demo demo = new Demo();
-			demo.setTitle(this.title);
-			demo.setContent(this.content);
-			demo.setPublishdate(new Date());
-			demoService.save(demo);
-		} else {
-			Demo demo = demoService.findById(this.id);
-			demo.setTitle(this.title);
-			demo.setContent(this.content);
-			demoService.save(demo);
+	@Action(value = "demoEditAction")
+	public String modify() {
+	    Demo demo;
+	    if("add".equals(this.oper)) {
+            demo = new Demo();
+            demo.setTitle(this.title);
+            demo.setContent(this.content);
+            demo.setPublishdate(new Date());
+            
+            demoService.save(demo);
+        } else if ("edit".equals(this.oper)) {
+		    demo = demoService.findById(Integer.parseInt(this.id));
+            demo.setTitle(this.title);
+            demo.setContent(this.content);
+            
+            demoService.save(demo);
+		} else if("del".equals(this.oper)){
+		    String[] ids = this.id.split("\\,");
+		    demoService.removeByIds(ids);
 		}
-		return SUCCESS;
+		return NONE;
 	}
 }

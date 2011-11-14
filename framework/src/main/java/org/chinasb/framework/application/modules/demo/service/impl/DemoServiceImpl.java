@@ -55,8 +55,10 @@ public class DemoServiceImpl implements DemoService {
 
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void removeByIds(Integer[] ids) {
-		demoDao.removeByIds(ids);
+	public void removeByIds(String[] ids) {
+		for(String id : ids) {
+		    demoDao.removeById(Integer.parseInt(id));
+		}
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public interface DemoService {
 	 * 批量根据主键删除demo
 	 * @param ids
 	 */
-	public void removeByIds(Integer[] ids);
+	public void removeByIds(String[] ids);
 
 	/**
 	 * 查询demo数据记录集
